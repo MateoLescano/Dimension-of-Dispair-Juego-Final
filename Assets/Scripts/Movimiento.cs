@@ -4,94 +4,107 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    
-    public float forceJump;//fuerza de salto
+    [SerializeField]
+    private float movementForce;
+    [SerializeField]
+    private float forceJump;
+    [SerializeField]
+    private float fallingGravity = 1.5f;
 
-    [SerializeField] private float speed;// velocidad de movimiento
+    [Header("Variables de colisión")]
+    [SerializeField]
+    private GameObject patas;
+    [SerializeField]
+    private LayerMask suelo;
 
     private Vector2 movement = Vector2.zero;//movimiento izquierda-derecha || izquierda x<0 y derecha x>0
-
-    bool jump;//habilita salto
 
     private Rigidbody2D rb;//variable para llamar rigid body
 
     private Animator anim;//variable para llamar al animator
 
-   public GameObject player;
+    private SpriteRenderer sprite;
 
-    private bool direccion;
+    private bool direccion, touchingFloor, isFalling, isJumping;
+
     void Start()
     {
         rb = transform.GetComponent<Rigidbody2D>();
-        anim.GetComponent<Animator>();
-        
-    }
-    private void FixedUpdate()
-    {
-        Move(movement);
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        check_direction(direccion);
+        Inputs();
         Animation_control();
-        movement.x = Input.GetAxis("Horizontal");
-        
-        
-        
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            jump = true;
-
-        }
-
-
+        FalllingStuff();
     }
 
-    private void check_direction( bool direccion)
+    private void FalllingStuff()
     {
-        if(Input.GetKey(KeyCode.A))
+        rb.gravityScale = isFalling ? fallingGravity : 1;
+        if  (isFalling) isJumping = false;
+    }
+
+    void FixedUpdate()
+    {
+        Jump_colision_floor();
+        Move();
+    }
+
+    private void Inputs()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        if (movement.x != 0) direccion = movement.x < 0;
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && touchingFloor)
         {
-            direccion = true;
+            Jump();
         }
 
-        if (Input.GetKey(KeyCode.D))
+        isFalling = rb.velocity.y < 0;
+        if (Input.GetKeyUp(KeyCode.Space) && !isFalling)
         {
-            direccion = false;
+            Stop_Jump();
         }
-       
+    }
+
+    private void Stop_Jump()
+    {
+        isJumping = false;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+    }
+
+    private void Jump_colision_floor()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(patas.transform.position, Vector2.down, .2f, suelo.value);
+        Debug.DrawLine(patas.transform.position, patas.transform.position + Vector3.down * .2f, Color.yellow);
+
+        touchingFloor = hit.collider != null;
     }
 
     private void Animation_control()
     {
-        
-        if (direccion)
-        {
-            player.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            player.GetComponent<SpriteRenderer>().flipX =false;
-        }
+        sprite.flipX = direccion;  
 
-        
+        bool isRunning = Mathf.Abs(rb.velocity.x) >= .5f;
+        anim.SetBool("Run", isRunning);
+        anim.SetBool("Fall", isFalling);
+        anim.SetBool("Jump", isJumping);
     }
 
-    private void Move(Vector2 movement)
+    private void Move()
     {
-        rb.MovePosition(rb.position + movement.normalized * speed * Time.fixedDeltaTime);
-        if (jump)
-        {
-            rb.velocity = Vector2.up * forceJump;
-            rb.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
-            jump = false;
-        }
+        rb.AddForce(movement.normalized * movementForce, ForceMode2D.Force);
     }
 
-
-
-
+    private void Jump()
+    {
+        anim.SetTrigger("TriggerJump");
+        isJumping = true;
+        rb.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
+    }
 }
