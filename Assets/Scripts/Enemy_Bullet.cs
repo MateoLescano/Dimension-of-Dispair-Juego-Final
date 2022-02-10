@@ -50,4 +50,11 @@ public class Enemy_Bullet : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+
+        Debug.Log("Daño"); //Falta implementar sistema de vida
+        Destroy(this.gameObject);
+
+    }
 }
