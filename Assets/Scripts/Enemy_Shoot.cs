@@ -9,15 +9,6 @@ public class Enemy_Shoot : MonoBehaviour
     private float summonTime;
     private Animator anim;
 
-    private void SummonBullet()
-    {
-        Instantiate(bullet, transform.position, Quaternion.identity);
-        ResetTimer();
-    }
-    private void ResetTimer()
-    {
-        summonTime = timeSummonBullet;
-    }
     void Start()
     {
         ResetTimer();
@@ -30,6 +21,16 @@ public class Enemy_Shoot : MonoBehaviour
         Timer();
     }
 
+    private void SummonBullet()
+    {
+        Instantiate(bullet, transform.position, Quaternion.identity);
+        ResetTimer();
+    }
+    private void ResetTimer()
+    {
+        summonTime = timeSummonBullet;
+    }
+
     private void Timer()
     {
 
@@ -38,10 +39,8 @@ public class Enemy_Shoot : MonoBehaviour
         {
             anim.SetTrigger("Shoot");
             SummonBullet();
-            
-            
-               
 
         }
     }
+
 }
