@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    public Image[] hearts = new Image [3];
+
     private void Awake() {
         if(instance == null){
             instance = this;
@@ -17,21 +21,28 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
         vida = 3;
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         Muerte();
     }
 
     public void Daño(){
+        //for (int vida = 3; vida <= 0; vida--)
+        //{
+        //    Debug.Log(vida);
+        //    hearts[vida].enabled = false;
+        //}
         vida--;
+        hearts[vida].enabled = false;
+
     }
 
     private void Muerte(){
