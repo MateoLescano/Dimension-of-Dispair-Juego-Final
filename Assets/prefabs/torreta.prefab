@@ -118,6 +118,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4796324817542155429, guid: 6cc7ef2762f61214c8b9e1dd57a27014, type: 3}
   timeSummonBullet: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  distance: 10
 --- !u!70 &881702656
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

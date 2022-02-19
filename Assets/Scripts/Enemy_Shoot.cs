@@ -9,16 +9,26 @@ public class Enemy_Shoot : MonoBehaviour
     private float summonTime;
     private Animator anim;
 
+    public LayerMask playerLayer;
+
+    public float distance;
+
+    private bool detectado;
+
     void Start()
     {
         ResetTimer();
         anim = GetComponent<Animator>();
-        
+        detectado = false;        
     }
 
     void Update()
     {
-        Timer();
+        Raycast();
+        if(detectado){
+            Timer();
+        }
+        
     }
 
     private void SummonBullet()
@@ -41,6 +51,19 @@ public class Enemy_Shoot : MonoBehaviour
             SummonBullet();
 
         }
+    }
+
+    private void Raycast(){
+        RaycastHit2D hit;
+        Ray ray;
+
+        // Debug.DrawRay(transform.position,Vector2.right * distance, Color.black);
+
+        if(Physics2D.Raycast(transform.position, Vector2.right, distance, playerLayer)){
+            detectado = true;
+            Debug.Log("DETECTADO");
+        }
+
     }
 
 }
