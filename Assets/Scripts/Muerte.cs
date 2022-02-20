@@ -23,7 +23,9 @@ public class Muerte : MonoBehaviour
             GameManager.instance.Daño();
             
         }else if(other.CompareTag("Damage")){
-            player.transform.position = new Vector3(30.4f, -0.53f, 0);
+
+            player.transform.position = new Vector3(30.4f, -1.16f, 0);
+            GameManager.instance.RegenerateHearts();
         }
     }
 }

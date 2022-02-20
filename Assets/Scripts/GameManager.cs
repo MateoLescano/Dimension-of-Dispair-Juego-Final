@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        Muerte();
+        Dead();
     }
 
     public void Daño(){
@@ -45,11 +45,21 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Muerte(){
+    private void Dead(){
         if(vida <= 0){
             Debug.Log("Has muerto");
-            player.transform.position = new Vector3(30.4f, -0.53f, 0);
+            player.transform.position = new Vector3(30.4f, -1.16f, 0);
             vida = 3;
+            RegenerateHearts();
+            
         }
     }
+
+    public void RegenerateHearts()
+    {
+        hearts[0].enabled = true;
+        hearts[1].enabled = true;
+        hearts[2].enabled = true;
+    }
+
 }
