@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    public IniciiDeNivel valoresIniciales;
+
     public static GameManager instance;
 
     public int vida;
@@ -24,8 +27,8 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        vida = 3;
-        
+        vida = valoresIniciales.vidaInicial;
+
     }
 
     
@@ -35,11 +38,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void Daño(){
-        //for (int vida = 3; vida <= 0; vida--)
-        //{
-        //    Debug.Log(vida);
-        //    hearts[vida].enabled = false;
-        //}
+
         vida--;
         hearts[vida].enabled = false;
 
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void Dead(){
         if(vida <= 0){
             Debug.Log("Has muerto");
-            player.transform.position = new Vector3(30.4f, -1.16f, 0);
+            Caida();
             vida = 3;
             RegenerateHearts();
             
@@ -60,6 +59,14 @@ public class GameManager : MonoBehaviour
         hearts[0].enabled = true;
         hearts[1].enabled = true;
         hearts[2].enabled = true;
+
     }
+
+    public void Caida()
+    {
+        player.transform.position = valoresIniciales.posicionInicial;
+    }
+
+
 
 }

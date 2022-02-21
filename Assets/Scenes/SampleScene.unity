@@ -563,7 +563,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4249117328694386806, guid: 4179e432ba87cf04dbc1fd83937288de, type: 3}
       propertyPath: m_Name
-      value: plataforma (1)
+      value: PlataformaMovediza
       objectReference: {fileID: 0}
     - target: {fileID: 4249117328694386811, guid: 4179e432ba87cf04dbc1fd83937288de, type: 3}
       propertyPath: m_RootOrder
@@ -678,6 +678,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 551fd88ab81eac6499cb324d02c011bc, type: 3}
+--- !u!1 &1272812953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4249117328694386806, guid: 4179e432ba87cf04dbc1fd83937288de, type: 3}
+  m_PrefabInstance: {fileID: 1032937139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1272812954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272812953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792d98913aad5e04fa87cfcff4c1a7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distancia: -2
+  plataforma: {fileID: 1272812953}
+  tiempoMovimiento: 3
 --- !u!1 &1535708031
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280faeac2e852fd40bf14c6ec83b8161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valoresIniciales: {fileID: 0}
   vida: 3
   player: {fileID: 1199960158}
   hearts:
@@ -1167,11 +1188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6020453934841713236, guid: 77b7ea013a608984db6e9775bebd8844, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.93
+      value: -33.82
       objectReference: {fileID: 0}
     - target: {fileID: 6020453934841713236, guid: 77b7ea013a608984db6e9775bebd8844, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.81
+      value: -15.49
       objectReference: {fileID: 0}
     - target: {fileID: 6020453934841713236, guid: 77b7ea013a608984db6e9775bebd8844, type: 3}
       propertyPath: m_LocalPosition.z

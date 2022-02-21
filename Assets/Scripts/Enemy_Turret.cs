@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Shoot : MonoBehaviour
+public class Enemy_Turret : MonoBehaviour
 {
     public GameObject bullet;//prefab de la bala
     public float timeSummonBullet;
@@ -54,8 +54,6 @@ public class Enemy_Shoot : MonoBehaviour
     }
 
     private void Raycast(){
-        RaycastHit2D hit;
-        Ray ray;
 
         // Debug.DrawRay(transform.position,Vector2.right * distance, Color.black);
 

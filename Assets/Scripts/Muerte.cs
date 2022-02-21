@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Muerte : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public GameObject player;
     void Start()
     {
@@ -24,7 +24,7 @@ public class Muerte : MonoBehaviour
             
         }else if(other.CompareTag("Damage")){
 
-            player.transform.position = new Vector3(30.4f, -1.16f, 0);
+            GameManager.instance.Caida();
             GameManager.instance.RegenerateHearts();
         }
     }
