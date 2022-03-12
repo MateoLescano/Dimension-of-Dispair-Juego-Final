@@ -18,11 +18,8 @@ public class Collision_Player : MonoBehaviour
         if (other.CompareTag("Damage"))
         {
             anim.SetTrigger("TakeDamageTrigger");
+            Debug.Log("daño");
         }
     }
 
-    void Update()
-    {
-        
-    }
 }

@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    private Animator anim;
+
+
     public Image[] hearts = new Image [3];
 
     private void Awake() {
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         vida = valoresIniciales.vidaInicial;
-
+        anim = player.GetComponent<Animator>();
     }
 
     
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
 
         vida--;
         hearts[vida].enabled = false;
+        anim.SetTrigger("TakeDamageTrigger");
 
     }
 
