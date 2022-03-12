@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlataformaPadre : MonoBehaviour
 {
-
-    public float distancia;
+    [Tooltip("unidades por segundo")]
+    public float velocidad;
     public GameObject plataforma;
     private bool subiendo;
+
+    private Rigidbody2D playerRb;
 
 
     [SerializeField] private float tiempoMovimiento;
@@ -15,22 +17,19 @@ public class PlataformaPadre : MonoBehaviour
 
     protected void DesplazamientoVertical()
     {
-        if (subiendo)
+        int direccion = subiendo ? 1 : -1;
+
+        plataforma.transform.position += new Vector3(0, velocidad * direccion, 0) * Time.deltaTime;
+
+        if (playerRb != null)
         {
-            plataforma.transform.position += new Vector3(0, distancia, 0) * Time.deltaTime;
-        }
-        else
-        {
-            plataforma.transform.position -= new Vector3(0, distancia, 0) * Time.deltaTime;
+            playerRb.velocity = new Vector2(playerRb.velocity.x, velocidad *direccion);
         }
     }
 
     protected void TimerMovimiento()
     {
-
         countDown -= Time.deltaTime;
-
-
         if (countDown > 0)
         {
             DesplazamientoVertical();
@@ -40,11 +39,21 @@ public class PlataformaPadre : MonoBehaviour
             subiendo = !subiendo;
             ResetTimer();
         }
-
     }
+
     private void ResetTimer()
     {
         countDown = tiempoMovimiento;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        playerRb = other.gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        playerRb = null;
     }
 
 }

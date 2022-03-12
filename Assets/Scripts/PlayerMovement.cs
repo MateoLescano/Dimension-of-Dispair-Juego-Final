@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movimiento : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float movementForce;
@@ -65,7 +65,7 @@ public class Movimiento : MonoBehaviour
             Jump();
         }
 
-        isFalling = rb.velocity.y < 0;
+        isFalling = !touchingFloor && rb.velocity.y < 0;
         if (Input.GetKeyUp(KeyCode.Space) && !isFalling)
         {
             Stop_Jump();
@@ -80,7 +80,7 @@ public class Movimiento : MonoBehaviour
 
     private void Jump_colision_floor()
     {
-        RaycastHit2D hit = Physics2D.Raycast(patas.transform.position, Vector2.down, .2f, suelo.value);
+        RaycastHit2D hit = Physics2D.Raycast(patas.transform.position, Vector2.down, .2f, suelo.value);//se puede cambair a box
         Debug.DrawLine(patas.transform.position, patas.transform.position + Vector3.down * .2f, Color.yellow);
 
         touchingFloor = hit.collider != null;
