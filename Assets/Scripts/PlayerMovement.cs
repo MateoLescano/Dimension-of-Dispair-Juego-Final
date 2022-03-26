@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float fallingGravity = 1.5f;
 
-    [Header("Variables de colisión")]
+    [Header("Variables de colisiï¿½n")]
     [SerializeField]
     private GameObject patas;
     [SerializeField]
@@ -107,4 +107,5 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
         rb.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
     }
+
 }
