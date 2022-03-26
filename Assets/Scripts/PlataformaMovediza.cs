@@ -17,4 +17,12 @@ public class PlataformaMovediza : PlataformaPadre
             DesplazamientoVertical();
  
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        other.collider.transform.SetParent(transform);
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        other.collider.transform.SetParent(null);
+    }
 }

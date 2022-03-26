@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Enemy_Bullet : MonoBehaviour
 {
     private float speed;
     [SerializeField] private float timeToDestroy;
     private float countDown;
-    private Vector2 move= Vector2.right;
+    private Vector2 move;
     private Rigidbody2D rb;
 
 
@@ -17,6 +17,14 @@ public class Enemy_Bullet : MonoBehaviour
         rb = transform.GetComponent<Rigidbody2D>();
         ResetTimer();
         velocidad();
+
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            move = Vector2.right;
+        }else{    
+            move = Vector2.left;
+        }
+
     }
 
     void Update()

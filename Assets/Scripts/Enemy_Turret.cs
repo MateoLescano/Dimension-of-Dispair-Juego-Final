@@ -15,10 +15,13 @@ public class Enemy_Turret : MonoBehaviour
 
     private bool detectado;
 
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         ResetTimer();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         detectado = false;        
     }
 
@@ -55,12 +58,23 @@ public class Enemy_Turret : MonoBehaviour
 
     private void Raycast(){
 
-        // Debug.DrawRay(transform.position,Vector2.right * distance, Color.black);
+        if(spriteRenderer.flipX == true){
+            Debug.DrawRay(transform.position,Vector2.right * distance, Color.black);
 
-        if(Physics2D.Raycast(transform.position, Vector2.right, distance, playerLayer)){
-            detectado = true;
-            Debug.Log("DETECTADO");
+            if(Physics2D.Raycast(transform.position, Vector2.right, distance, playerLayer)){
+                detectado = true;
+                Debug.Log("DETECTADO");
+            }
+        }else{
+            Debug.DrawRay(transform.position,Vector2.left * distance, Color.black);
+
+            if(Physics2D.Raycast(transform.position, Vector2.left, distance, playerLayer)){
+                detectado = true;
+                Debug.Log("DETECTADO");
+            }
         }
+
+        
 
     }
 
