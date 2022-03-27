@@ -122,6 +122,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   distance: 10
+  spriteRenderer: {fileID: 3831600370967753394}
+  isLookLeft: 0
 --- !u!70 &881702656
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

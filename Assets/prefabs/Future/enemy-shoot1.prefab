@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 5
+  turret: {fileID: 3831600370967753393, guid: 3dbec69ff34037d44a8ed82335b2a5ac, type: 3}
 --- !u!50 &5002953771070982674
 Rigidbody2D:
   serializedVersion: 4

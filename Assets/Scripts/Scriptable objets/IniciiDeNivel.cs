@@ -8,6 +8,11 @@ using UnityEngine;
 //Valores asignados al principio de cada nivel
 public class IniciiDeNivel : ScriptableObject
 {
+    public GameObject inicioNv;
+
+    [HideInInspector]
     public Vector2 posicionInicial;
+
     public int vidaInicial;
+
 }

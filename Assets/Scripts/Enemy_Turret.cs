@@ -15,7 +15,10 @@ public class Enemy_Turret : MonoBehaviour
 
     private bool detectado;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
+
+    [HideInInspector]
+    public bool isLookLeft;
 
     void Start()
     {
@@ -60,16 +63,19 @@ public class Enemy_Turret : MonoBehaviour
 
         if(spriteRenderer.flipX == true){
             Debug.DrawRay(transform.position,Vector2.right * distance, Color.black);
-
+            
             if(Physics2D.Raycast(transform.position, Vector2.right, distance, playerLayer)){
                 detectado = true;
+                isLookLeft = false;
                 Debug.Log("DETECTADO");
             }
         }else{
+            
             Debug.DrawRay(transform.position,Vector2.left * distance, Color.black);
 
             if(Physics2D.Raycast(transform.position, Vector2.left, distance, playerLayer)){
                 detectado = true;
+                isLookLeft = true;
                 Debug.Log("DETECTADO");
             }
         }
