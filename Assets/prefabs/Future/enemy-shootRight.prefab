@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5002953771070982674}
   - component: {fileID: 5483916769932052861}
   m_Layer: 7
-  m_Name: enemy-shoot1
+  m_Name: enemy-shootRight
   m_TagString: Bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 5
-  turret: {fileID: 3831600370967753393, guid: 3dbec69ff34037d44a8ed82335b2a5ac, type: 3}
+  torreta: {fileID: 3831600370967753405, guid: 3dbec69ff34037d44a8ed82335b2a5ac, type: 3}
 --- !u!50 &5002953771070982674
 Rigidbody2D:
   serializedVersion: 4
