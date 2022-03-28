@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47197840133a134b909bd3e3639263b, type: 3}
+  m_Name: InicioNivel3
+  m_EditorClassIdentifier: 
+  inicioNv: {fileID: 6403477447361256017, guid: b6ab46f5c83d21f4ca4c9b040975c1c1, type: 3}
+  posicionInicial: {x: -8, y: 0.7}
+  vidaInicial: 3

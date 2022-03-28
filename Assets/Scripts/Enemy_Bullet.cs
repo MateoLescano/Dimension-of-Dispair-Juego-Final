@@ -9,7 +9,6 @@ public class Enemy_Bullet : MonoBehaviour
     private float countDown;
     private Vector2 move;
     private Rigidbody2D rb;
-
     public Enemy_Turret turret;
 
 

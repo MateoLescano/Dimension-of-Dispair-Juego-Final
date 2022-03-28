@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valoresIniciales: {fileID: 11400000, guid: 6478275fe39403647a1c3ce032986b37, type: 2}
   vida: 3
-  player: {fileID: 4007464993210503246, guid: 551fd88ab81eac6499cb324d02c011bc, type: 3}
+  player: {fileID: 0}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
