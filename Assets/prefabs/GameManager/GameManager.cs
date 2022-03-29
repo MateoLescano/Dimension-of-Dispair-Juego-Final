@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Dead();
+        Exit();
     }
 
     public void Daño(){
@@ -73,6 +74,15 @@ public class GameManager : MonoBehaviour
     public void Caida()
     {
         player.transform.position = valoresIniciales.posicionInicial;
+    }
+
+    public void Exit()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Debug.Log("se salio");
+            Application.Quit();
+        }
     }
 
 
