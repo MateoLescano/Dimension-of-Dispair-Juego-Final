@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     public void Caida()
     {
         player.transform.position = valoresIniciales.posicionInicial;
+        vida = 3;
     }
 
     public void Exit()

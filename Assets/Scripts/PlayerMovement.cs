@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Variables de colisi�n")]
     [SerializeField]
     private GameObject patas;
+    [SerializeField]
+    private Vector2 boxOverlapSize;
     [SerializeField]
     private LayerMask suelo;
 
@@ -80,10 +80,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump_colision_floor()
     {
-        RaycastHit2D hit = Physics2D.Raycast(patas.transform.position, Vector2.down, .2f, suelo.value);//se puede cambair a box
-        Debug.DrawLine(patas.transform.position, patas.transform.position + Vector3.down * .2f, Color.yellow);
+        Collider2D hit = Physics2D.OverlapBox(patas.transform.position, boxOverlapSize, 0, suelo.value);
 
-        touchingFloor = hit.collider != null;
+        touchingFloor = hit != null;
     }
 
     private void Animation_control()
@@ -108,4 +107,9 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(patas.transform.position, boxOverlapSize);
+    }
 }
