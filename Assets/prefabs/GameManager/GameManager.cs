@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         if(instance == null){
             instance = this;
-
-
         }
     }
     
@@ -33,9 +31,6 @@ public class GameManager : MonoBehaviour
         vida = valoresIniciales.vidaInicial;
         anim = player.GetComponent<Animator>();
         valoresIniciales.posicionInicial = player.transform.position;
-
-
-
     }
 
     
