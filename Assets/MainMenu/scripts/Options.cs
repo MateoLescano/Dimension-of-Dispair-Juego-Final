@@ -17,6 +17,8 @@ public class Options : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080, true);
+        
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
@@ -40,9 +42,11 @@ public class Options : MonoBehaviour
     {
         if(resolutions != null){
             resolution = resolutions[resolutionIndex];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }else{
+            Screen.SetResolution(1920, 1080, true);
         }
 
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
 
