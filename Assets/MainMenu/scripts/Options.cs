@@ -10,8 +10,7 @@ public class Options : MonoBehaviour
     public GameObject optionsCanvas;
     [SerializeField] private AudioMixer audioMixer;
 
-    
-
+    public Resolution resolution;
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
 
@@ -39,16 +38,19 @@ public class Options : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
-        Resolution resolution = resolutions[resolutionIndex];
+        if(resolutions != null){
+            resolution = resolutions[resolutionIndex];
+        }
+
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
 
     public void GoToOptions()
     {
-        optionsCanvas.SetActive(true);
         mainCanvas.SetActive(false);
-        
+        optionsCanvas.SetActive(true);
+
     }
 
     public void Fullscreen(bool fullscreen)

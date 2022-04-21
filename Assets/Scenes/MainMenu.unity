@@ -5141,7 +5141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2fd3878b47fd8479e016c6bb22b40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 2023154683}
+  mainCanvas: {fileID: 1829812398}
   optionsCanvas: {fileID: 2006252604}
   audioMixer: {fileID: 24100000, guid: d40a081238b447b4faa114d72724a75f, type: 2}
   resolutionDropdown: {fileID: 1464076158}

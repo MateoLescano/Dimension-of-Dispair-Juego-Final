@@ -16,6 +16,6 @@ public class Credits : MonoBehaviour
     {
         mainCanvas.SetActive(false);
         creditCanvas.SetActive(true);
-      
+    
     }
 }
